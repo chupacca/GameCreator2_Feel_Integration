@@ -1,5 +1,5 @@
 # GameCreator2_Feel_Integration
-Creating Game Creator 2 Actions that integrate with the FEEL API
+Creating Game Creator 2 Actions that integrates with the FEEL API, so Game Creator 2 Actions can call FEEL's Feedback effects/animations
 
 --------------
 
