@@ -9,20 +9,23 @@ public class JumpData: IComponentData
     public MMFeedbacks Value;
 }
 
-// JumpSystem class is a system that controls the behavior of the jump action
-// it is derived from the SystemBase class which is a base class for creating systems in Unity's ECS
-public partial class JumpSystem: SystemBase
+public class JumpSystem: SystemBase
 {
-    // OnUpdate method is called every frame
+    private ComponentGroup jumpDataGroup;
+    protected override void OnCreateManager()
+    {
+        // Create a group of all entities that have the JumpData component
+        jumpDataGroup = GetComponentGroup(typeof(JumpData));
+    }
     protected override void OnUpdate()
     {
-        // Check if the space key is pressed
         if(Input.KeyDown(KeyCode.Space))
         {
-            // Retrieve a collection of all entities that have the JumpData component
-            foreach (var jumpData in SystemAPI.Query<JumpData>)
+            // Get the array of all entities that have the JumpData component 
+            var jumpDataArray = jumpDataGroup.GetComponentDataArray<JumpData>();
+            for (int i = 0; i < jumpDataArray.Length; i++)
             {
-                // Call the PlayFeedbacks method on the Value field of the JumpData component
+                var jumpData = jumpDataArray[i];
                 jumpData.Value.PlayFeedbacks();
             }
         }
