@@ -2,6 +2,11 @@ using Unity.Entities;
 using Unity.Transforms;
 using Unity.Collections;
 
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Animations;
+using MoreMountains.Feedbacks;
+
 // JumpData class is a component data that implements the IComponentData interface
 // it has a public field Value which is an instance of the MMFeedbacks class
 public class JumpData: IComponentData
